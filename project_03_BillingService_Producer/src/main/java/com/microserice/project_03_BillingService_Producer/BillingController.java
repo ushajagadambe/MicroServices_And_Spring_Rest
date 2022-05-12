@@ -1,5 +1,7 @@
 package com.microserice.project_03_BillingService_Producer;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/billing")
 public class BillingController {
     @GetMapping("/details")
-    public  String getBillingDetails()
+    public ResponseEntity<Billing> getBillingDetails()
     {
-       return  "we accepts all types of card";
+        Billing billing=new Billing();
+        billing.setBill_id("abc");
+       return  new ResponseEntity<>(billing,HttpStatus.OK);
     }
 }
